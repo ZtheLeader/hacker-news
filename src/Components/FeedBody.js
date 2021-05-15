@@ -1,10 +1,10 @@
 import StoryTypeFilters from "./StoryTypeFilters";
 import Story from "./Story";
-const FeedBody = ({ }) => {
+const FeedBody = ({ setStoryTypeHandler }) => {
   return (
     <main>
       <StoryTypeFilters
-
+      setStoryTypeHandler={setStoryTypeHandler}
       />
       <div className="listing-wrapper">
         <div className="row">

@@ -11,19 +11,29 @@ import { getStoryIds } from "../api/stories";
 
 const Feed = () => {
   const [storyIds, setStoryIds] = useState([])
-  const [storyType, setStoryType] = useState('new')
+  const [storiesType, setStoriesType] = useState('new')
 
   useEffect(() => {
-    getStoryIds(storyType).then(storyIds => {
+    getStoryIds(storiesType).then(storyIds => {
       setStoryIds(storyIds)
     })
   }, [])
+
+  useEffect(() => {
+    getStoryIds(storiesType).then(storyIds => {
+      console.log(storiesType)
+      setStoryIds(storyIds)
+    })
+  }, [storiesType])
 
   return (
     <div className="main-wrapper">
       <Header />
 
-      <FeedBody />
+      <FeedBody
+        setStoryTypeHandler={setStoriesType}
+
+      />
 
       <Footer />
     </div>
