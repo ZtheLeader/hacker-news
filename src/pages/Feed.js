@@ -25,7 +25,7 @@ const Feed = () => {
 
       </main>
       <footer>
-        <div className="text-center">
+        <div className="footer-wrapper text-center">
           <button className="btn btn-success">Load More</button>
         </div>
         <div className="footer-logo">
