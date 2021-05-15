@@ -22,6 +22,11 @@ body {
   border-color: $primary-color;
   color: $secondary-color;
 }
+.btn-default {
+  background-color: $grey;
+  color: $secondary-color;
+  border: none;
+}
 
 .main-wrapper {
   max-width: 767px;
@@ -40,6 +45,26 @@ header {
   .nav {
     text-align: center;
     padding: 17px;
+  }
+}
+
+// Filter Buttons
+.data-filter {
+  padding: 0 15px 15px;
+  .btn-success {
+      width: auto;
+      padding: 4px 12px;
+
+      &:active, &:focus {
+          background-color: $primary-color;
+          border-color: $primary-color;
+          color: $secondary-color;    
+      }
+  }
+
+  .btn-default {
+      width: auto;
+      padding: 4px 12px;
   }
 }
 

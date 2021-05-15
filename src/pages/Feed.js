@@ -7,10 +7,14 @@ const Feed = () => {
         </div>
       </header>
       <main>
+        <div class="data-filter">
+          <span><button class="btn btn-success">New</button></span>
+          <span><button class="btn btn-default">Past</button></span>
+        </div>
         <div className="listing-wrapper">
           <div className="row">
             <div className="col-sm-12">
-              
+
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">Lorem Ipsum is simply dummy text.</h5>
@@ -81,7 +85,7 @@ const Feed = () => {
                   </p>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>
