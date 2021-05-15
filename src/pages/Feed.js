@@ -7,9 +7,9 @@ const Feed = () => {
         </div>
       </header>
       <main>
-        <div class="listing-wrapper">
-          <div class="row">
-            <div class="col-sm-12">
+        <div className="listing-wrapper">
+          <div className="row">
+            <div className="col-sm-12">
               <div className="">
                 1
               </div>
