@@ -1,6 +1,16 @@
 const Feed = () => {
   return (
-    <h1>Welcome to the Feed Page</h1>
+    <div className="main-wrapper">
+      <header>
+
+      </header>
+      <main>
+
+      </main>
+      <footer>
+
+      </footer>
+    </div>
   )
 }
 
