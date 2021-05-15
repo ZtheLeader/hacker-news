@@ -10,9 +10,14 @@ import Footer from "../Components/Footer";
 import { getStoryIds } from "../api/stories";
 
 const Feed = () => {
+  // State
   const [storyIds, setStoryIds] = useState([])
   const [storiesType, setStoriesType] = useState('new')
+  
 
+  // Methods
+
+  // Effects
   useEffect(() => {
     getStoryIds(storiesType).then(storyIds => {
       setStoryIds(storyIds)
@@ -25,6 +30,7 @@ const Feed = () => {
     })
   }, [storiesType])
 
+  // Template
   return (
     <div className="main-wrapper">
       <Header />
