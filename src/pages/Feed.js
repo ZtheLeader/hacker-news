@@ -10,10 +10,13 @@ import Footer from "../Components/Footer";
 import { getStoryIds } from "../api/stories";
 
 const Feed = () => {
+  const [storyIds, setStoryIds] = useState([])
   const [storyType, setStoryType] = useState('new')
 
   useEffect(() => {
-    getStoryIds(storyType).then(r => console.log(r))
+    getStoryIds(storyType).then(storyIds => {
+      setStoryIds(storyIds)
+    })
   }, [])
 
   return (
