@@ -21,7 +21,6 @@ const Feed = () => {
 
   useEffect(() => {
     getStoryIds(storiesType).then(storyIds => {
-      console.log(storiesType)
       setStoryIds(storyIds)
     })
   }, [storiesType])
@@ -32,7 +31,7 @@ const Feed = () => {
 
       <FeedBody
         setStoryTypeHandler={setStoriesType}
-
+        storiesType={storiesType}
       />
 
       <Footer />
