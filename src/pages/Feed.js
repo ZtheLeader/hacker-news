@@ -3,7 +3,7 @@ const Feed = () => {
     <div className="main-wrapper">
       <header>
         <div className="nav">
-          <img src="../assets/images/hackernews.svg" alt="hackernews-logo" />
+          <img src={require("../assets/images/hackernews.svg").default} alt="hackernews-logo" />
         </div>
       </header>
       <main>
@@ -14,7 +14,7 @@ const Feed = () => {
           <button className="btn btn-success">Load More</button>
         </div>
         <div className="footer-logo">
-          <img src="../assets/images/hackernews-footer.svg" alt="footer logo" />
+          <img src={require("../assets/images/hackernews-footer.svg").default} alt="footer logo" />
         </div>
       </footer>
     </div>
