@@ -7,6 +7,21 @@ const Feed = () => {
         </div>
       </header>
       <main>
+        <div class="listing-wrapper">
+          <div class="row">
+            <div class="col-sm-12">
+              <div className="">
+                1
+              </div>
+              <div className="">
+                2
+              </div>
+              <div className="">
+                3
+              </div>
+            </div>
+          </div>
+        </div>
 
       </main>
       <footer>
