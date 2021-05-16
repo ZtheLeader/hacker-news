@@ -16,17 +16,18 @@ import TimeAgo from 'react-timeago'
 import { formatUnixTime, formatter } from "../utils/utils";
 
 const Feed = () => {
-  // State
+  //** State
   const [storyIds, setStoryIds] = useState([])
   const [storiesType, setStoriesType] = useState('new')
   const [stories, setStories] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   const [loading, setLoading] = useState(false)
   
-  // Constants
+  //** Constants
   const storiesPerPage = 5
 
-  // Methods
+  //** Methods
+
   /**
    * Creates and returns a chunked array based on currentPage and storiesPerPage
    * to be used for frontend based pagination as API doesn't give paginated response
@@ -65,14 +66,20 @@ const Feed = () => {
   }
 
   /**
-   * Reuses the getCurrentChunk and paginateStories to Load more posts
+   * Reuses the getCurrentChunk and paginateStories to Load More posts
    */
   const handleLoadMore = () => {
     const currentStoriesChunk = getCurrentChunk()
     paginateStories(currentStoriesChunk)
   }
 
-  // Effects
+  //** Effects
+  // To keep the code modular, structured and clear separation of concerns,
+  // I've used separate Effects for each case and in fact, this is what React official docs suggests.
+
+  /**
+   * Runs on initial Render to get the storyIds based on storiesType
+   */
   useEffect(() => {
     if (stories.length === 0) {
       setLoading(true)
@@ -83,6 +90,9 @@ const Feed = () => {
     }
   }, [])
 
+  /**
+   * As the storyIds update, it gets the paginated stories
+   */
   useEffect(() => {
     if (stories.length === 0  && currentPage === 1) {
       const currentStoriesChunk = getCurrentChunk();
@@ -90,6 +100,9 @@ const Feed = () => {
     }
   }, [storyIds])
 
+  /**
+   * Whenever the storiesType changes, it gets the first stories based on storiesPerPage.
+   */
   useEffect(() => {
     setCurrentPage(1)
     setStories([])

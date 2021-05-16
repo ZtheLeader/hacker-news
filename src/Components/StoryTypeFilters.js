@@ -3,7 +3,7 @@
  * In the Task detail we're asked to filter `New` and `Top` stories but in Mockup there are New and Past stories.
  * According to the available API: https://github.com/HackerNews/API#new-top-and-best-stories,
  * Only New, Top and Best stories are available to be fetched
- * So i'm implementing New/Top/Best stories to resolve any confusion
+ * So I'm implementing New/Top/Best stories to resolve any confusion
  */
 
 const StoryTypeFilters = ({ onChangeStoryType, storiesType }) => {
