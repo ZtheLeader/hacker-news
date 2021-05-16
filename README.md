@@ -32,7 +32,9 @@ Additionally, to create a build run, ``yarn build``
 Unit tests can be run by using `yarn test` command.
 
 ### Version Control and Branches
-I've used git as version control and I've made extensive commits with self explanatory messages so that my progress is highlighted through commits. I've also made a few branches
+I've used git as version control and I've made extensive commits with self explanatory messages so that my progress is highlighted through commits. See all commits by running `git log`.
+
+I've also made a few branches
 
  1. **`master`** is the default branch which has all the commits of other branches `merge`d in it.
  2. **`hackerNews/design-ui`** as the name suggests, I designed all the static UI and wrote Sass in this branch.
