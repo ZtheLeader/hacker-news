@@ -1,70 +1,52 @@
-# Getting Started with Create React App
-
+# HackerNews by [Muhammad Zain](https://sites.google.com/view/meetzain)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## PS
+A little note to the reader/evaluators by Zain:
 
-In the project directory, you can run:
+>Hi dear Sir/Mam. Hope you're having a great Day. I got a little late on the submission. Reason for that is when I received this activity in my email inbox, **I was already away for one week on a tour.  And when I returned, my mother fell ill**. Now that I've found the chance, I've worked and completed the activity within 12 hours straight. (Hope this doesn't affect my evaluation process as I've completed it way earlier than 3 days span)
+>
+> This was a really fun and challenging activity and I've tried my best to deliver quality code. I've added comments, JSDocs, and named methods, variables so that you may understand them easily. I also committed frequently and made sure that commit messages are self explanatory. Hope there is nothing that you find hard to understand. 
+>
+> -Zain
+ 
+ 
+## Project Information
 
-### `yarn start`
+### Setting up
+ 1. Extract the project from compressed file.
+ 2. `cd hacker-news`
+ 3. Run `yarn` or `npm install`
+ 4. `yarn start` or `npm run start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Additionally, to create a build run, ``yarn build``
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Unit Tests
+`src/specs/App.test.js` file contains all the unit tests of available components and pages. Every `describe(..` block represents a separate test suit and there are multiple tests in when suit which are represented by `test(..` block. Tests descriptions should help in understanding  what is actually happening in a test.
 
-### `yarn test`
+Unit tests can be run by using `yarn test` command.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Version Control and Branches
+I've used git as version control and I've made extensive commits with self explanatory messages so that my progress is highlighted through commits. I've also made a few branches
 
-### `yarn build`
+ 1. **`master`** is the default branch which has all the commits of other branches `merge`d in it.
+ 2. **`hackerNews/design-ui`** as the name suggests, I designed all the static UI and wrote Sass in this branch.
+ 3. **`hackerNews/implement-basic-functionality`** has basic functional part in it. Here I split my static UI into reusable components, create API methods, Implement pagination etc.
+ 4. **`hackerNews/implement-extra-functionality`** Here I add extra functionality which is beyond the description of Task. Like, I add React-Timeago here, Show loaded/total stories count here, hide Load More button if no more posts are here, and Introduce `loading` state etc.
+ 5. **`hackerNews/test-specs`** Implements Unit tests of all the components. Tests can be found in `[src/specs/App.test.js](src/specs/App.test.js)`
+ 6. **`hackerNews/update-readme.md`** Updates the [README.md](README.md) file.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Directory Information
+ - API methods (using native `fetch` API with `async/await` pattern): `[src/api/stories.js](src/api/stories.js)`
+ - Sass styles of entire application: `[src/assets/sass](src/assets/sass)`
+ - Images/icons/logos: `[src/assets/images](src/assets/images)`
+ - Application Level Components: `[src/Components](src/Components)`
+ - Available pages (currently we only have `Feed`page): `[src/pages/Feed.js](src/pages/Feed.js)`
+ - Test specs of all the components and pages: `[src/specs/App.test.js](src/specs/App.test.js)`
+ - Utility methods: `[src/utils/utils.js](src/utils/utils.js)`
+ - Homepage: `[src/App.js](src/App.js)`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 3rd Party Libraries Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ 1. [Bootstrap](https://getbootstrap.com/)
+ 2. [React Timeago](https://github.com/nmn/react-timeago)
