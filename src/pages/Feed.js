@@ -53,8 +53,8 @@ const Feed = () => {
     const currentStoriesData = paginatedStories.map(story => (
       <Story
         key={story?.id}
-        heading={story?.title}
-        content={story?.type === 'job' ? story?.text : story?.url} // news don't have text in them
+        title={story?.title}
+        body={story?.type === 'job' ? story?.text : story?.url} // news don't have text in them
         time={<TimeAgo date={formatUnixTime(story?.time)} formatter={formatter} />}
         commentsCount={story?.type === 'job' ? '' : story?.descendants} // jobs don't have comments in them
         storyType={story?.type}
