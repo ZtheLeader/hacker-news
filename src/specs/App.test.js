@@ -3,6 +3,7 @@ import Feed from "../pages/Feed";
 import LoadMore from "../Components/LoadMore";
 import StoryTypeFilters from "../Components/StoryTypeFilters";
 import Story from "../Components/Story";
+import FeedBody from "../Components/FeedBody";
 
 //Todo: Fix test descs, split in separate files
 describe("Logos", () => {
@@ -90,8 +91,19 @@ describe("Story", () => {
     expect(screen.getByTestId('story-comments')).toHaveTextContent('30 Comments');
 
     rerender(<Story key={1} title={'Title Text'} body={'Body Text'} time={"Time"} commentsCount={30} storyType={"job"} />);
-    expect(screen.getByTestId('story-comments')).not.toHaveTextContent('30 Comments');
+    expect(screen.queryByText('30 Comments')).not.toBeInTheDocument();
 
+  });
+
+});
+
+describe("FeedBody", () => {
+  test('Tests if Story component as rendered in FeedBody', () => {
+    const storyTypeHandler = jest.fn();
+    const stories = <Story key={1} title={'Title Text'} body={'Body Text'} time={"Time"} commentsCount={30} storyType={"story"} />
+    const { getByText } = render(<FeedBody setStoryTypeHandler={storyTypeHandler} storiesType={'new'} stories={stories}/>);
+
+    expect(getByText(/Body Text/i)).toBeInTheDocument();
   });
 
 });
