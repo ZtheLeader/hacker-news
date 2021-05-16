@@ -3,7 +3,7 @@ const Story = ({ heading, content, time, commentsCount, storyType }) => {
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">{heading}</h5>
-        <p className="card-text">{content}</p>
+        <p className="card-text truncate">{content}</p>
         <p className="card-footer">
           <span>{time}</span>
           {storyType !== 'job' &&
