@@ -2,6 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Feed from "../pages/Feed";
 import LoadMore from "../Components/LoadMore";
 import StoryTypeFilters from "../Components/StoryTypeFilters";
+import Story from "../Components/Story";
 
 //Todo: Fix test descs, split in separate files
 describe("Logos", () => {
@@ -79,6 +80,18 @@ describe("StoryTypeFilters", () => {
 
     fireEvent.click(screen.getByTestId('top-stories'))
     expect(setStoryTypeHandler).toHaveBeenCalled();
+  });
+
+});
+
+describe("Story", () => {
+  test('Tests if comments count renders correctly', () => {
+    const { rerender } = render(<Story key={1} title={'Title Text'} body={'Body Text'} time={"Time"} commentsCount={30} storyType={"story"} />);
+    expect(screen.getByTestId('story-comments')).toHaveTextContent('30 Comments');
+
+    rerender(<Story key={1} title={'Title Text'} body={'Body Text'} time={"Time"} commentsCount={30} storyType={"job"} />);
+    expect(screen.getByTestId('story-comments')).not.toHaveTextContent('30 Comments');
+
   });
 
 });

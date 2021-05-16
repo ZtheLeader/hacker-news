@@ -7,7 +7,7 @@ const Story = ({ title, body, time, commentsCount, storyType }) => {
         <p className="card-footer">
           <span>{time}</span>
           {storyType !== 'job' &&
-            <span>{commentsCount} Comment{commentsCount === 1 ? '': 's'}</span>}
+            <span data-testid="story-comments">{commentsCount} Comment{commentsCount === 1 ? '': 's'}</span>}
         </p>
       </div>
     </div>
