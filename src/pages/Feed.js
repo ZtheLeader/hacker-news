@@ -5,17 +5,19 @@ import { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import FeedBody from "../Components/FeedBody";
 import Footer from "../Components/Footer";
+import Story from "../Components/Story";
 
 //** API
-import { getStoryIds } from "../api/stories";
+import { getStoryIds, getStoriesData } from "../api/stories";
 
 const Feed = () => {
   // State
   const [storyIds, setStoryIds] = useState([])
   const [storiesType, setStoriesType] = useState('new')
+  const [stories, setStories] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
   // Constants
-  const storiesPerPage = 5  
+  const storiesPerPage = 5
 
   // Methods
   /**
@@ -25,22 +27,50 @@ const Feed = () => {
    * @returns Array
    */
   const getCurrentChunk = () => {
-    const indexOfLastPostIds = currentPage * storiesPerPage;
-    const indexOfFirstPostIds = indexOfLastPostIds - storiesPerPage;
+    const indexOfLastStoriesIds = currentPage * storiesPerPage;
+    const indexOfFirstStoriesIds = indexOfLastStoriesIds - storiesPerPage;
     setCurrentPage(currentPage + 1)
-    const currentPostIds = storyIds.slice(indexOfFirstPostIds, indexOfLastPostIds);
-    return currentPostIds
+    const currentStoryIds = storyIds.slice(indexOfFirstStoriesIds, indexOfLastStoriesIds);
+    return currentStoryIds
+  }
+
+  const paginateStories = async currentStoriesChunk => {
+    const paginatedStories = await getStoriesData(currentStoriesChunk);
+    const currentStoriesData = paginatedStories.map(story => (
+      <Story
+        key={story?.id}
+        heading={story?.title}
+        content={story?.type === 'job' ? story?.text : story?.url} // news don't have text in them
+        time={story?.time}
+        commentsCount={story?.type === 'job' ? '' : story?.descendants} // jobs don't have comments in them
+        storyType={story?.type}
+      ></Story>
+    ))
+    setStories([...stories, ...currentStoriesData])
   }
 
   // Effects
   useEffect(() => {
-    getStoryIds(storiesType).then(storyIds => {
-      setStoryIds(storyIds)
-    })
+    if (stories.length === 0) {
+      getStoryIds(storiesType).then((storyIds) => {
+        setStoryIds(storyIds)
+      })
+    }
   }, [])
 
   useEffect(() => {
-    console.log(getCurrentChunk())
+    if (stories.length === 0) {
+      const currentStoriesChunk = getCurrentChunk();
+      paginateStories(currentStoriesChunk)
+    }
+  }, [storyIds])
+
+  useEffect(() => {
+    setCurrentPage(1)
+    setStories([])
+    getStoryIds(storiesType).then((storyIds) => {
+      setStoryIds(storyIds)
+    })
   }, [storiesType])
 
   // Template
@@ -51,6 +81,7 @@ const Feed = () => {
       <FeedBody
         setStoryTypeHandler={setStoriesType}
         storiesType={storiesType}
+        stories={stories}
       />
 
       <Footer />
