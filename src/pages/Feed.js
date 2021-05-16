@@ -10,6 +10,10 @@ import Story from "../Components/Story";
 //** API
 import { getStoryIds, getStoriesData } from "../api/stories";
 
+//** Utils
+import TimeAgo from 'react-timeago'
+import { formatUnixTime, formatter } from "../utils/utils";
+
 const Feed = () => {
   // State
   const [storyIds, setStoryIds] = useState([])
@@ -41,7 +45,7 @@ const Feed = () => {
         key={story?.id}
         heading={story?.title}
         content={story?.type === 'job' ? story?.text : story?.url} // news don't have text in them
-        time={story?.time}
+        time={<TimeAgo date={formatUnixTime(story?.time)} formatter={formatter} />}
         commentsCount={story?.type === 'job' ? '' : story?.descendants} // jobs don't have comments in them
         storyType={story?.type}
       ></Story>
