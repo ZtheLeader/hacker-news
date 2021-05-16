@@ -9,8 +9,8 @@
 const StoryTypeFilters = ({ onChangeStoryType, storiesType }) => {
   return (
     <div className="data-filter">
-      <span><button className={"btn " + (storiesType === 'new' ? "btn-success" : "btn-default")} onClick={() => onChangeStoryType('new')}>New</button></span>
-      <span><button className={"btn " + (storiesType === 'top' ? "btn-success" : "btn-default")} onClick={() => onChangeStoryType('top')}>Top</button></span>
+      <span><button data-testid="new-stories" className={"btn " + (storiesType === 'new' ? "btn-success" : "btn-default")} onClick={() => onChangeStoryType('new')}>New</button></span>
+      <span><button data-testid="top-stories" className={"btn " + (storiesType === 'top' ? "btn-success" : "btn-default")} onClick={() => onChangeStoryType('top')}>Top</button></span>
       <span><button className={"btn " + (storiesType === 'best' ? "btn-success" : "btn-default")} onClick={() => onChangeStoryType('best')}>Best</button></span>
     </div>
   )
