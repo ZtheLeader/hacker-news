@@ -83,7 +83,7 @@ const Feed = () => {
   }, [])
 
   useEffect(() => {
-    if (stories.length === 0) {
+    if (stories.length === 0  && currentPage === 1) {
       const currentStoriesChunk = getCurrentChunk();
       paginateStories(currentStoriesChunk)
     }
@@ -113,6 +113,8 @@ const Feed = () => {
       <Footer
         loadMore={handleLoadMore}
         loading={loading}
+        totalStories={storyIds.length}
+        loadedStories={stories.length}
       />
     </div>
   )
