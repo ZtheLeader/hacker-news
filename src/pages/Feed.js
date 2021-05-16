@@ -20,6 +20,8 @@ const Feed = () => {
   const [storiesType, setStoriesType] = useState('new')
   const [stories, setStories] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [loading, setLoading] = useState(false)
+  
   // Constants
   const storiesPerPage = 5
 
@@ -45,6 +47,7 @@ const Feed = () => {
    * @param {array} currentStoriesChunk 
    */
   const paginateStories = async currentStoriesChunk => {
+    setLoading(true)
     const paginatedStories = await getStoriesData(currentStoriesChunk);
     const currentStoriesData = paginatedStories.map(story => (
       <Story
@@ -57,6 +60,7 @@ const Feed = () => {
       ></Story>
     ))
     setStories([...stories, ...currentStoriesData])
+    setLoading(false)
   }
 
   /**
@@ -70,8 +74,10 @@ const Feed = () => {
   // Effects
   useEffect(() => {
     if (stories.length === 0) {
+      setLoading(true)
       getStoryIds(storiesType).then((storyIds) => {
         setStoryIds(storyIds)
+        setLoading(false)
       })
     }
   }, [])
@@ -86,8 +92,10 @@ const Feed = () => {
   useEffect(() => {
     setCurrentPage(1)
     setStories([])
+    setLoading(true)
     getStoryIds(storiesType).then((storyIds) => {
       setStoryIds(storyIds)
+      setLoading(false)
     })
   }, [storiesType])
 
@@ -104,6 +112,7 @@ const Feed = () => {
 
       <Footer
         loadMore={handleLoadMore}
+        loading={loading}
       />
     </div>
   )
