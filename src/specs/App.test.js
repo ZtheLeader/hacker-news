@@ -5,47 +5,46 @@ import StoryTypeFilters from "../Components/StoryTypeFilters";
 import Story from "../Components/Story";
 import FeedBody from "../Components/FeedBody";
 
-//Todo: Fix test descs, split in separate files
+
 describe("Logos", () => {
-  test('Check if Header Logo renders', () => {
+  test('Tests if Header Logo renders', () => {
     render(<Feed />);
     const headerLogo = screen.getByAltText(/hackernews-header-logo/i);
     expect(headerLogo).toHaveAttribute('src', 'hackernews.svg');
   });
 
-  test('Check if Footer Logo renders', () => {
+  test('Tests if Footer Logo renders', () => {
     render(<Feed />);
     const headerLogo = screen.getByAltText(/footer logo/i);
     expect(headerLogo).toHaveAttribute('src', 'hackernews-footer.svg');
   });
 });
 
-describe("Load More Button", () => {
+describe("LoadMore", () => {
 
-  it("Renders Load More button if totalStories and loadedStories are not equal", () => {
+  it("Renders Load More button only if totalStories and loadedStories are not equal", () => {
     const loadMoreHandler = jest.fn();
-    render(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={20} />);
+    const { rerender } = render(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={20} />);
 
     const loadMoreButton = screen.getByTestId('load-more-button')
     expect(loadMoreButton).toBeInTheDocument()
+
+    rerender(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={40} />);
+
+    expect(screen.queryByText('Load More (40/40)')).not.toBeInTheDocument()
   });
 
-  it("Doesn't render button if totalStories and loadedStories are equal", () => {
+  it("Evaluates Load More button text based on loading prop", () => {
     const loadMoreHandler = jest.fn();
-    render(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={40} />);
-
-    const loadMoreButton = screen.queryByText('Load More (40/40)')
-    expect(loadMoreButton).not.toBeInTheDocument()
-  });
-
-  it("Checks Button text if loading is true", () => {
-    const loadMoreHandler = jest.fn();
-    render(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={20} />);
+    const { rerender } = render(<LoadMore handleLoadMore={loadMoreHandler} loading={true} totalStories={40} loadedStories={20} />);
 
     expect(screen.getByTestId('load-more-button')).toHaveTextContent('Loading..');
+
+    rerender(<LoadMore handleLoadMore={loadMoreHandler} loading={false} totalStories={40} loadedStories={20} />);
+    expect(screen.queryByText('Load More (20/40)')).toBeInTheDocument()
   });
 
-  it("handleLoadMore invokes function", () => {
+  it("handleLoadMore invokes the function loadMoreHandler", () => {
     const loadMoreHandler = jest.fn();
     const { getByTestId } = render(<LoadMore handleLoadMore={loadMoreHandler} loading={false} totalStories={40} loadedStories={20} />);
 
@@ -59,20 +58,14 @@ describe("StoryTypeFilters", () => {
   it("Checks if correct class is applied to active button", () => {
     const setStoryTypeHandler = jest.fn();
 
-    render(<StoryTypeFilters onChangeStoryType={setStoryTypeHandler} storiesType={'new'} />);
+    const { rerender } = render(<StoryTypeFilters onChangeStoryType={setStoryTypeHandler} storiesType={'new'} />);
     expect(screen.getByTestId('new-stories')).toHaveClass('btn-success');
 
-  });
-
-  it("Checks if btn-success class is not applied to in-active button", () => {
-    const setStoryTypeHandler = jest.fn();
-
-    render(<StoryTypeFilters onChangeStoryType={setStoryTypeHandler} storiesType={'best'} />);
+    rerender(<StoryTypeFilters onChangeStoryType={setStoryTypeHandler} storiesType={'best'} />);
     expect(screen.getByTestId('new-stories')).not.toHaveClass('btn-success');
-
   });
 
-  it("onChangeStoryType invokes setStoryTypeHandler function", () => {
+  it("Checks onChangeStoryType invokes setStoryTypeHandler function", () => {
     const setStoryTypeHandler = jest.fn();
     render(<StoryTypeFilters onChangeStoryType={setStoryTypeHandler} storiesType={'new'} />);
 
