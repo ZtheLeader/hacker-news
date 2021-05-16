@@ -38,6 +38,12 @@ const Feed = () => {
     return currentStoryIds
   }
 
+  /**
+   * Takes array of chunked storyIds, fetches their detail from getStoriesData 
+   * and updates/ appends the setStories with newly created Stories.
+   * 
+   * @param {array} currentStoriesChunk 
+   */
   const paginateStories = async currentStoriesChunk => {
     const paginatedStories = await getStoriesData(currentStoriesChunk);
     const currentStoriesData = paginatedStories.map(story => (
@@ -51,6 +57,14 @@ const Feed = () => {
       ></Story>
     ))
     setStories([...stories, ...currentStoriesData])
+  }
+
+  /**
+   * Reuses the getCurrentChunk and paginateStories to Load more posts
+   */
+  const handleLoadMore = () => {
+    const currentStoriesChunk = getCurrentChunk()
+    paginateStories(currentStoriesChunk)
   }
 
   // Effects
@@ -88,7 +102,9 @@ const Feed = () => {
         stories={stories}
       />
 
-      <Footer />
+      <Footer
+        loadMore={handleLoadMore}
+      />
     </div>
   )
 }
