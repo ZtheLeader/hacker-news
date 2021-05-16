@@ -4,7 +4,7 @@ const LoadMore = ({ handleLoadMore, loading, totalStories, loadedStories }) => {
     <>
       {loadedStories !== totalStories &&
         <div className="footer-wrapper text-center">
-          <button className="btn btn-success" onClick={handleLoadMore}>{loading ? 'Loading..' : `Load More (${loadedStories}/${totalStories})`}</button>
+          <button className="btn btn-success" onClick={handleLoadMore} data-testid="load-more-button">{loading ? 'Loading..' : `Load More (${loadedStories}/${totalStories})`}</button>
         </div>}
     </>
   )
