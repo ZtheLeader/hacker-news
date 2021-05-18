@@ -24,7 +24,7 @@ const Feed = () => {
   const [loading, setLoading] = useState(false)
   
   //** Constants
-  const storiesPerPage = 5
+  const storiesPerPage = 10
 
   //** Methods
 
