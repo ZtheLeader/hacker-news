@@ -2,11 +2,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## PS
-A little note to the reader/evaluators by Zain:
 
->Hi dear Sir/Mam. Hope you're having a great Day. I got a little late on the submission. Reason for that is when I received this activity in my email inbox, **I was already away for one week on a tour.  And when I returned, my mother fell ill**. Now that I've found the chance, I've worked and completed the activity within 12 hours straight. (Hope this doesn't affect my evaluation process as I've completed it way earlier than 3 days span)
->
-> This was a really fun and challenging activity and I've tried my best to deliver quality code. I've added comments, JSDocs, and named methods, variables so that you may understand them easily. I also committed frequently and made sure that commit messages are self explanatory. Hope there is nothing that you find hard to understand. 
+>I've added comments, JSDocs, and named methods, variables so that you may understand them easily. I also committed frequently and made sure that commit messages are self explanatory. Hope there is nothing that you find hard to understand. 
 >
 > -Zain
 
